@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гордана & Димитар - 29.08.2026</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --accent: #d4a3a3; --text: #4a4a4a; --bg: #fff9f9; }
+        :root { 
+            --accent: #d4a3a3; 
+            --text: #4a4a4a; 
+            --bg: #fff9f9; 
+            --shadow: 0 10px 30px rgba(212, 163, 163, 0.15);
+            --ig-blue: #0077b5;
+            --ig-pink: #d62976;
+        }
         
         body { 
             font-family: 'Montserrat', sans-serif; 
             margin: 0; padding: 0; color: var(--text);
             overflow-x: hidden; 
-            
-            /* ЦВЕЌЕТО: Долу Десно */
             background-image: url('https://lh3.googleusercontent.com/d/1Hs4OphR5xPDy8mIaD41I6Q3Z1ZJcH4S7');
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -21,20 +28,13 @@
             background-size: 320px;
         }
 
-        /* ПОЗАДИНА: Ротирана и Зумирана */
         .full-background {
             position: fixed;
-            top: -50%; 
-            left: -50%; 
-            width: 200%; 
-            height: 200%;
+            top: -50%; left: -50%; width: 200%; height: 200%;
             background-image: url('https://lh3.googleusercontent.com/d/1F6TSVTgcEkCIyJ9WEon-0r-GG1VCVF-n');
-            background-size: cover;
-            background-position: center;
-            background-repeat: repeat;
+            background-size: cover; background-position: center; background-repeat: repeat;
             transform: rotate(-10deg) scale(1.2);
-            z-index: -5; 
-            opacity: 0.6;
+            z-index: -5; opacity: 0.6;
         }
 
         @media (max-width: 600px) { 
@@ -45,94 +45,81 @@
         .page { display: none; padding: 20px; animation: fadeIn 0.8s ease-in-out; text-align: center; position: relative; z-index: 1; }
         .active { display: block; }
 
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
         .main-header-img { transition: all 0.5s ease; display: block; margin: 10px auto; max-width: 95%; }
         .img-large { width: 600px; }
         .img-small { width: 240px; }
 
         .hero h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; letter-spacing: 2px; background: rgba(255,255,255,0.7); display: inline-block; padding: 5px 15px; border-radius: 10px; }
         
-        .timer-container { margin: 20px auto; background: rgba(255, 255, 255, 0.9); padding: 15px; border-radius: 15px; max-width: 400px; border: 1px solid var(--accent); }
+        .timer-container { margin: 20px auto; background: rgba(255, 255, 255, 0.9); padding: 15px; border-radius: 15px; max-width: 400px; border: 1px solid var(--accent); box-shadow: var(--shadow); }
         #countdown { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: bold; }
         
-        .nav-buttons { display: flex; flex-direction: column; gap: 10px; align-items: center; margin-top: 20px; }
-        .btn { width: 280px; padding: 14px; font-size: 14px; border: 1px solid var(--accent); background: white; color: var(--text); cursor: pointer; border-radius: 5px; transition: 0.4s; font-weight: bold; letter-spacing: 1px; text-decoration: none; display: inline-block; box-sizing: border-box; }
-        .btn:hover { background: var(--accent); color: white; }
+        .nav-buttons { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 12px; 
+            max-width: 600px; 
+            margin: 20px auto; 
+        }
+
+        .btn { 
+            width: 100%; padding: 14px 5px; font-size: 12px; border: 1px solid var(--accent); background: white; 
+            color: var(--text); cursor: pointer; border-radius: 5px; transition: 0.4s; font-weight: bold; 
+            letter-spacing: 0.5px; text-decoration: none; display: flex; align-items: center; justify-content: center; box-sizing: border-box; 
+        }
+        .btn:hover { background: var(--accent); color: white; transform: translateY(-2px); }
         
-        .content-box { max-width: 600px; margin: auto; background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 5px; box-shadow: 0 10px 30px rgba(212, 163, 163, 0.15); border: 1px solid #f2e4e4; }
-        .btn-back { margin-top: 20px; background: none; border: none; color: var(--accent); text-decoration: underline; cursor: pointer; display: block; margin: 20px auto; }
+        .ig-container { display: flex; justify-content: center; gap: 15px; margin: 20px auto; flex-wrap: wrap; }
+        .btn-ig { width: 160px; color: white; border: none; font-size: 11px; padding: 12px; border-radius: 5px; font-weight: bold; text-decoration: none; }
+        .btn-ig-blue { background-color: var(--ig-blue); }
+        .btn-ig-pink { background-color: var(--ig-pink); }
+
+        /* Language Toggle Styles */
+        .lang-toggle-container { margin: 20px auto; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; max-width: 600px; }
+        .btn-lang { padding: 8px 12px; font-size: 11px; border: 1px solid var(--accent); background: white; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-lang.active-lang { background: var(--accent); color: white; }
+
+        .content-box { max-width: 600px; margin: auto; background: rgba(255, 255, 255, 0.97); padding: 25px; border-radius: 10px; box-shadow: var(--shadow); border: 1px solid #f2e4e4; }
+        .btn-back { margin-top: 25px; background: none; border: none; color: var(--accent); text-decoration: underline; cursor: pointer; display: block; margin-left: auto; margin-right: auto; font-weight: bold; }
         
-        input, textarea, select { width: 95%; padding: 12px; margin: 10px 0; border: 1px solid var(--accent); border-radius: 5px; font-family: 'Montserrat', sans-serif; }
-        #messagesList { text-align: left; margin-top: 20px; max-height: 350px; overflow-y: auto; border-top: 1px solid #eee; padding-top: 10px; }
+        input, textarea, select { width: 95%; padding: 12px; margin: 10px 0; border: 1px solid var(--accent); border-radius: 5px; font-family: 'Montserrat', sans-serif; font-size: 16px; }
         
-        /* HAMBURGER MENU STYLES */
-        .hamburger {
-            font-size: 35px;
-            cursor: pointer;
-            position: fixed;
-            top: 15px;
-            left: 20px;
-            z-index: 100;
-            color: var(--accent);
-            display: none; 
-            background: rgba(255,255,255,0.7);
-            padding: 5px 10px;
-            border-radius: 5px;
+        @keyframes emojiBurst {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
         }
+        .animated-emoji { display: inline-block; animation: emojiBurst 0.6s cubic-bezier(0.17, 0.67, 0.83, 1.67) forwards; }
 
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 101;
-            top: 0;
-            left: 0;
-            background-color: #fff;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-        }
+        .hamburger { font-size: 35px; cursor: pointer; position: fixed; top: 15px; left: 20px; z-index: 100; color: var(--accent); display: none; background: rgba(255,255,255,0.8); padding: 5px 12px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .sidenav { height: 100%; width: 0; position: fixed; z-index: 101; top: 0; left: 0; background-color: #fff; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: 2px 0 15px rgba(0,0,0,0.1); }
+        .sidenav a { padding: 12px 32px; text-decoration: none; font-size: 18px; color: var(--text); display: block; transition: 0.3s; font-family: 'Playfair Display', serif; border-bottom: 1px solid #f9f9f9; }
+        .sidenav a:hover { color: var(--accent); background: #fef9f9; }
+        .sidenav .closebtn { position: absolute; top: 10px; right: 25px; font-size: 36px; border-bottom: none; }
 
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 20px;
-            color: var(--text);
-            display: block;
-            transition: 0.3s;
-            font-family: 'Playfair Display', serif;
-            border-bottom: 1px solid #eee;
-        }
+        #suggestionBox { display: none; margin-top: 15px; padding: 12px; background-color: #fff0f0; border: 1px dashed var(--accent); border-radius: 8px; text-align: left; }
+        .suggestion-link { color: var(--accent); font-weight: bold; text-decoration: underline; cursor: pointer; }
 
-        .sidenav a:hover { color: var(--accent); }
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-            border-bottom: none;
-        }
+        #gbFormContainer { display: none; margin-bottom: 25px; padding: 20px; background: #fffcfc; border: 1px solid var(--accent); border-radius: 8px; }
+        
+        .menu-item { border-bottom: 1px dashed var(--accent); padding: 15px 0; }
+        .menu-item strong { color: var(--accent); display: block; font-size: 1.1rem; margin-bottom: 4px; }
 
-        /* Suggestion Box Styles */
-        #suggestionBox {
-            display: none;
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #fef4f4;
-            border: 1px dashed var(--accent);
-            border-radius: 5px;
-            text-align: left;
-        }
-        .suggestion-link {
-            color: var(--accent);
-            font-weight: bold;
-            text-decoration: underline;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
+        .home-msg-item { background: white; padding: 10px; margin-bottom: 8px; border-radius: 5px; border-left: 3px solid var(--accent); text-align: left; font-size: 0.9rem; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .search-group { position: relative; width: 100%; text-align: left; }
+        .dropdown-suggestions {
+            position: absolute; top: 100%; left: 0; width: 95%; background: white;
+            border: 1px solid var(--accent); border-top: none; z-index: 1000;
+            max-height: 150px; overflow-y: auto; display: none; border-radius: 0 0 5px 5px;
+            box-shadow: var(--shadow);
+        }
+        .dropdown-suggestions div { padding: 10px; cursor: pointer; border-bottom: 1px solid #eee; }
+        .dropdown-suggestions div:hover { background: #fff4f4; }
+
+        #messagesList { text-align: left; }
     </style>
 </head>
 <body>
@@ -143,124 +130,265 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="#" onclick="showPage('homePage'); closeNav()">Почетна</a>
-        <a href="#" onclick="showPage('tablePage'); closeNav()">Најди маса</a>
-        <a href="#" onclick="showPage('menuPage'); closeNav()">Мени</a>
-        <a href="#" onclick="showPage('bandPage'); closeNav()">Музика</a>
-        <a href="#" onclick="showPage('galleryPage'); closeNav()">Галерија</a>
-        <a href="#" onclick="showPage('guestbookPage'); closeNav()">Впечатоци</a>
+        <a href="#" onclick="showPage('homePage'); closeNav()" data-key="nav_home">Почетна</a>
+        <a href="#" onclick="showPage('tablePage'); closeNav()" data-key="nav_table">Најди маса</a>
+        <a href="#" onclick="showPage('locationPage'); closeNav()" data-key="nav_location">Локација</a>
+        <a href="#" onclick="showPage('menuPage'); closeNav()" data-key="nav_menu">Мени</a>
+        <a href="#" onclick="showPage('bandPage'); closeNav()" data-key="nav_music">Музика</a>
+        <a href="#" onclick="showPage('galleryPage'); closeNav()" data-key="nav_gallery">Галерија</a>
+        <a href="#" onclick="showPage('guestbookPage'); closeNav()" data-key="nav_guestbook">Впечатоци</a>
     </div>
 
     <img id="mainLogo" src="https://lh3.googleusercontent.com/d/1yipa967Mr0LG5l5I6H3im9NQV3clCiId" class="main-header-img img-large" alt="Гордана и Димитар">
 
     <div id="homePage" class="page active">
         <div class="hero">
-            <h2>29.08.2026 • 19:00ч</h2>
-            <div class="timer-container"><div id="countdown">Се вчитавува...</div></div>
-            <div class="nav-buttons">
-                <button class="btn" onclick="showPage('tablePage')">НАЈДИ ЈА ТВОЈАТА МАСА</button>
-                <button class="btn" onclick="showPage('menuPage')">ПОГЛЕДНИ ГО МЕНИТО</button>
-                <button class="btn" onclick="showPage('bandPage')">ЗА ЗАБАВАТА</button>
-                <button class="btn" onclick="showPage('galleryPage')">ГАЛЕРИЈА СО СЛИКИ</button>
-                <button class="btn" onclick="showPage('guestbookPage')">КНИГА НА ВПЕЧАТОЦИ</button>
-            </div>
-            <div style="max-width:600px; margin: 40px auto; padding: 20px; border-top: 1px solid var(--accent); background: rgba(255,255,255,0.8); border-radius: 10px;">
-                <h3 style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--accent);">Нашата Приказна</h3>
-                <p style="font-style: italic; color: #666;">
+            <h2 data-key="wedding_date">29.08.2026 • 19:00ч</h2>
+            <div class="timer-container"><div id="countdown" data-key="loading">Се вчитавува...</div></div>
+            
+            <div style="max-width:600px; margin: 30px auto; padding: 25px; border-top: 1px solid var(--accent); background: rgba(255,255,255,0.85); border-radius: 12px; box-shadow: var(--shadow);">
+                <h3 style="font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: var(--accent); margin-bottom: 10px;" data-key="story_title">Нашата Приказна</h3>
+                <p style="font-style: italic; color: #555; line-height: 1.6;" data-key="story_text">
                     Добредојдовте во нашата дигитална покана! Се радуваме што ќе го споделиме овој посебен ден со вас. 
-                    Овде можете да ги најдете сите потребни информации за прославата.
+                    Овде можете да ги најдете сите потребни информации за прославата, да го видите менито или да ни оставите порака.
                 </p>
             </div>
+
+            <div class="nav-buttons">
+                <button class="btn" onclick="showPage('tablePage')" data-key="btn_find_table">НАЈДИ ЈА ТВОЈАТА МАСА</button>
+                <button class="btn" onclick="showPage('locationPage')" data-key="btn_location">ЛОКАЦИЈА</button>
+                <button class="btn" onclick="showPage('menuPage')" data-key="btn_menu">ПОГЛЕДНИ ГО МЕНИТО</button>
+                <button class="btn" onclick="showPage('bandPage')" data-key="btn_party">ЗА ЗАБАВАТА</button>
+                <button class="btn" onclick="showPage('galleryPage')" data-key="btn_gallery">ГАЛЕРИЈА СО СЛИКИ</button>
+                <button class="btn" onclick="showPage('guestbookPage')" data-key="btn_guestbook">КНИГА НА ВПЕЧАТОЦИ</button>
+            </div>
+
+            <div style="max-width:600px; margin: 20px auto; padding: 15px;">
+                <h4 style="font-family: 'Playfair Display', serif; color: var(--accent);" data-key="latest_wishes">Најнови желби</h4>
+                <div id="homeMessages" data-key="loading">Се вчитавуваат...</div>
+                <button class="btn-back" style="text-decoration: none; font-size: 0.9rem;" onclick="showPage('guestbookPage')" data-key="view_all">Видете ги сите впечатоци →</button>
+                
+                <div class="ig-container">
+                    <a href="https://www.instagram.com/stevcev_/" target="_blank" class="btn-ig btn-ig-blue">DIMITAR INSTAGRAM</a>
+                    <a href="https://www.instagram.com/gordanastevceva/" target="_blank" class="btn-ig btn-ig-pink">GORDANA INSTAGRAM</a>
+                </div>
+
+                <div class="lang-toggle-container">
+                    <button class="btn-lang active-lang" onclick="changeLang('mk')">MK</button>
+                    <button class="btn-lang" onclick="changeLang('en')">EN</button>
+                    <button class="btn-lang" onclick="changeLang('hr')">HR</button>
+                    <button class="btn-lang" onclick="changeLang('sr')">SR</button>
+                    <button class="btn-lang" onclick="changeLang('sq')">SQ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="locationPage" class="page">
+        <div class="content-box">
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--accent);" data-key="nav_location">Локација</h2>
+            <p data-key="loc_text">Прославата ќе се одржи во:</p>
+            <h3 style="font-family: 'Playfair Display', serif;">Ресторан Leona Lux Cristal Радовиш</h3>
+            <div style="margin: 20px 0; border-radius: 10px; overflow: hidden; height: 300px; background: #eee;">
+                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2983.834017726353!2d22.518604075845014!3d41.63773177126938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1355913259929e0b%3A0xe962e205562095f7!2sLeona%20Lux%20Cristal!5e0!3m2!1sen!2smk!4v1715858000000!5m2!1sen!2smk" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <a href="https://maps.app.goo.gl/9S4C3yV9kR1R1" target="_blank" class="btn" style="width: 100%; background: var(--accent); color: white;" data-key="btn_open_maps">ОТВОРИ ВО GOOGLE MAPS</a>
+            <button class="btn-back" onclick="showPage('homePage')" data-key="back">← НАЗАД</button>
         </div>
     </div>
 
     <div id="tablePage" class="page">
         <div class="content-box">
-            <h2 style="font-family: 'Playfair Display', serif; color: var(--accent);">Вашата Маса</h2>
-            <input type="text" id="guestNameSearch" placeholder="Внесете Име и Презиме">
-            <div style="background: #fff; padding: 10px; border: 1px solid #eee; margin: 10px 0;">
-                <canvas id="captchaCanvas" width="150" height="50" onclick="generateCaptcha()"></canvas>
-                <input type="text" id="captchaInput" placeholder="Код од сликата">
-            </div>
-            <button class="btn" style="width:100%; background: var(--accent); color: white;" onclick="findTable()">ПРЕБАРАЈ</button>
-            
-            <div id="suggestionBox">
-                Дали мислевте на: <span id="suggestedName" class="suggestion-link" onclick="applySuggestion()"></span> ?
-            </div>
-
+            <h2 style="font-family: 'Playfair Display', serif; color: var(--accent);" data-key="table_title">Вашата Маса</h2>
+            <p data-key="table_desc">Внесете го вашето име за да дознаете каде седите.</p>
+            <input type="text" id="guestNameSearch" data-placeholder="input_name_placeholder">
+            <button class="btn" style="width:100%; background: var(--accent); color: white;" onclick="findTable()" data-key="search">ПРЕБАРАЈ</button>
+            <div id="suggestionBox"><span data-key="did_you_mean">Дали мислевте на:</span> <span id="suggestedName" class="suggestion-link" onclick="applySuggestion()"></span> ?</div>
             <div id="result" style="display:none; margin-top: 25px;">
-                <h3 id="welcomeMsg" style="font-family: 'Great Vibes', cursive; font-size: 2rem;"></h3>
-                <div style="font-size: 2rem; font-weight: bold; color: var(--accent);" id="tableNumResult"></div>
-                <div id="otherGuests" style="text-align: left; padding: 15px; background: #fff9f9; border-left: 2px solid var(--accent); margin-top: 10px;"></div>
+                <h3 id="welcomeMsg" style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--accent);"></h3>
+                <div style="font-size: 2.5rem; font-weight: bold; color: var(--text); margin: 10px 0;" id="tableNumResult"></div>
+                <div id="otherGuests" style="text-align: left; padding: 15px; background: #fff9f9; border-left: 4px solid var(--accent); margin-top: 15px; border-radius: 4px;"></div>
             </div>
-            <button class="btn-back" onclick="showPage('homePage')">← НАЗАД</button>
+            <button class="btn-back" onclick="showPage('homePage')" data-key="back">← НАЗАД</button>
         </div>
     </div>
 
     <div id="menuPage" class="page">
         <div class="content-box">
-            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--accent);">Свадбено Мени</h2>
-            <div style="text-align: left; line-height: 1.8; font-family: 'Playfair Display', serif;">
-                <p><strong>1. Ладно предјадење:</strong> Македонска даска</p>
-                <p><strong>2. Салата:</strong> Шопска салата</p>
-                <p><strong>3. Топло предјадење:</strong> Сармички и похуван кашкавал</p>
-                <p><strong>4. Главно јадење:</strong> Мешана скара и печен компир</p>
-                <p><strong>5. Десерт:</strong> Свадбена торта</p>
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--accent);" data-key="menu_title">Свадбено Мени</h2>
+            <div style="text-align: left; margin-top: 20px;">
+                <div class="menu-item"><strong data-key="menu_1_t">🍸 Добредојде</strong> <span data-key="menu_1_c">Аперитив и коктел за добредојде со ладни каснаци.</span></div>
+                <div class="menu-item"><strong data-key="menu_2_t">🥗 Салата</strong> <span data-key="menu_2_c">Шопска салата со свежо овчо сирење и македонска даска (пршут, кашкавал, ајвар, маслинки).</span></div>
+                <div class="menu-item"><strong data-key="menu_3_t">🧀 Топло предјадење</strong> <span data-key="menu_3_c">Сармички во лозов лист и домашен похуван кашкавал.</span></div>
+                <div class="menu-item"><strong data-key="menu_4_t">🍖 Главно јадење</strong> <span data-key="menu_4_c">Мешана скара (плескавица, пилешки стек, вешалица) со гарнир од печен компир и зеленчук.</span></div>
+                <div class="menu-item"><strong data-key="menu_5_t">🍰 Десерт</strong> <span data-key="menu_5_c">Свечена свадбена торта и свежо сезонско овошје.</span></div>
             </div>
-            <button class="btn-back" onclick="showPage('homePage')">← НАЗАД</button>
+            <button class="btn-back" onclick="showPage('homePage')" data-key="back">← НАЗАД</button>
         </div>
     </div>
 
     <div id="bandPage" class="page">
         <div class="content-box">
-            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--accent);">За забавата...</h2>
-            <p>За подиумот да биде постојано полн, задолжени се нашите пријатели од <strong>Бенд Панта Реи</strong>.</p>
-            <a href="https://www.facebook.com/pantareiband/" target="_blank" class="btn" style="width: auto; padding: 14px 20px;">Посетете го нивниот профил</a>
-            <button class="btn-back" onclick="showPage('homePage')">← НАЗАД</button>
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--accent);" data-key="nav_music">Музика</h2>
+            <p data-key="music_desc">За подиумот да биде постојано полн и атмосферата незаборавна, задолжени се нашите пријатели:</p>
+            <h3 style="color: var(--accent); font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 20px 0;">БЕНД ПАНТА РЕИ</h3>
+            <p data-key="shoes_text">Подгответе ги удобните чевли!</p>
+            <div style="display: flex; flex-direction: column; gap: 10px; align-items: center; margin-top: 20px;">
+                <a href="https://www.facebook.com/pantareiband/" target="_blank" class="btn" style="background: #3b5998; color: white; border: none;" data-key="fb_profile">ФЕЈСБУК ПРОФИЛ</a>
+                <a href="https://www.instagram.com/panta_rei_band/" target="_blank" class="btn" style="background: #e1306c; color: white; border: none;" data-key="ig_profile">ИНСТАГРАМ ПРОФИЛ</a>
+            </div>
+            <button class="btn-back" onclick="showPage('homePage')" data-key="back">← НАЗАД</button>
         </div>
     </div>
 
     <div id="galleryPage" class="page">
-        <div class="content-box" style="max-width: 800px;">
-            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--accent);">Галерија</h2>
-            <iframe src="https://drive.google.com/embeddedfolderview?id=1myuoQARxyfqchMvi-iQaDL5-lJh9BMBkILR7LhTXvcquzGL-l0h0IWaqsRYrVlwF60G3wEiM#grid" style="width: 100%; height: 400px; border: none; border-radius: 10px; background: #eee;"></iframe>
-            
-            <div style="margin-top: 30px; padding: 20px; border: 1px dashed var(--accent); border-radius: 10px; background: #fffcfc;">
-                <h4>Споделете моменти со нас</h4>
+        <div class="content-box" style="max-width: 850px;">
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--accent);" data-key="nav_gallery">Галерија</h2>
+            <iframe src="https://drive.google.com/embeddedfolderview?id=1myuoQARxyfqchMvi-iQaDL5-lJh9BMBkILR7LhTXvcquzGL-l0h0IWaqsRYrVlwF60G3wEiM#grid" style="width: 100%; height: 450px; border: none; border-radius: 10px; background: #f9f9f9; box-shadow: inset 0 0 10px rgba(0,0,0,0.05);"></iframe>
+            <div style="margin-top: 30px; padding: 25px; border: 2px dashed var(--accent); border-radius: 12px; background: #fffcfc;">
+                <h4 style="margin-top: 0;" data-key="gallery_share_title">Споделете моменти со нас</h4>
+                <p style="font-size: 0.9rem;" data-key="gallery_share_desc">Доколку имате слики од забавата кои сакате да ни ги испратите, притиснете на копчето подолу.</p>
                 <div id="uploadCaptchaArea">
-                    <canvas id="uploadCaptchaCanvas" width="150" height="50" onclick="generateUploadCaptcha()" style="cursor:pointer; border:1px solid #ddd;"></canvas>
-                    <input type="text" id="uploadCaptchaInput" placeholder="Код од сликата">
-                    <button class="btn" style="width:100%;" onclick="verifyAndUpload()">ПРИКАЧИ ФАЈЛ</button>
+                    <canvas id="uploadCaptchaCanvas" width="150" height="50" onclick="generateUploadCaptcha()" style="cursor:pointer; border:1px solid #ddd; border-radius: 5px; background: white;"></canvas>
+                    <input type="text" id="uploadCaptchaInput" data-placeholder="captcha_placeholder">
+                    <button class="btn" style="width:100%; background: var(--accent); color: white;" onclick="verifyAndUpload()" data-key="btn_upload">ПРИКАЧИ ФАЈЛОВИ</button>
                 </div>
-                <div id="uploadLink" style="display: none;">
-                    <p style="color: green; font-weight: bold;">✅ Кодот е точен!</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6-d0ZnfiLBh57pvsQNZAPXI3jB9RKg3oOJaupEsww6X2Qyg/viewform" target="_blank" class="btn" style="width: 100%; background: var(--accent); color: white;">КЛИКНИ ТУКА ЗА ПРИКАЧУВАЊЕ</a>
+                <div id="uploadLink" style="display: none; animation: fadeIn 0.5s;">
+                    <p style="color: #2e7d32; font-weight: bold;" data-key="captcha_correct">✅ Кодот е точен!</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6-d0ZnfiLBh57pvsQNZAPXI3jB9RKg3oOJaupEsww6X2Qyg/viewform" target="_blank" class="btn" style="width: 100%; background: #2e7d32; color: white; border: none;" data-key="click_to_upload">КЛИКНИ ТУКА ЗА ПРИКАЧУВАЊЕ</a>
                 </div>
             </div>
-            <button class="btn-back" onclick="showPage('homePage')">← НАЗАД</button>
+            <button class="btn-back" onclick="showPage('homePage')" data-key="back">← НАЗАД</button>
         </div>
     </div>
 
     <div id="guestbookPage" class="page">
         <div class="content-box">
-            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--accent);">Вашите Желби</h2>
-            <div style="text-align: left;">
-                <label>Број на вашата маса:</label>
-                <input type="number" id="guestbookTableNum" placeholder="пр. 1" oninput="filterGuestNames()">
-                <label>Изберете го вашето име:</label>
-                <select id="visitorNameSelect"><option value="">-- Внеси број на маса --</option></select>
-                <label>Вашата порака:</label>
-                <textarea id="visitorMessage" placeholder="Напишете нешто убаво..."></textarea>
-                <button id="sendBtn" class="btn" style="width:100%; background: var(--accent); color: white;" onclick="postMessage()">ОБЈАВИ</button>
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--accent);" data-key="guestbook_title">Вашите Желби</h2>
+            <button id="togglePostBtn" class="btn" style="margin-bottom: 20px; background: var(--accent); color: white; width: 100%;" onclick="toggleGbForm()" data-key="btn_new_post">✨ НОВА ОБЈАВА</button>
+            <div id="gbFormContainer">
+                <div style="text-align: left;">
+                    <label><strong data-key="label_table">Маса:</strong></label>
+                    <select id="gbTableSelect" onchange="resetGbNameField()">
+                        <option value="" data-key="opt_choose_table">Избери маса...</option>
+                        </select>
+
+                    <label><strong data-key="label_name">Вашето име:</strong></label>
+                    <div class="search-group">
+                        <input type="text" id="gbNameInput" data-placeholder="gb_name_placeholder" oninput="handleGbSearch(this.value)" autocomplete="off">
+                        <div id="gbDropdown" class="dropdown-suggestions"></div>
+                    </div>
+
+                    <label><strong data-key="label_msg">Вашата порака:</strong></label>
+                    <textarea id="gbMessageInput" rows="4" data-placeholder="gb_msg_placeholder"></textarea>
+                    
+                    <button class="btn" style="width:100%; background: var(--accent); color: white;" onclick="postMessage()" data-key="btn_publish">ОБЈАВИ</button>
+                    <div id="postStatus" style="display:none; margin-top:15px; padding:10px; border-radius:5px; font-weight:bold; text-align:center;"></div>
+                    <button class="btn-back" onclick="toggleGbForm()" data-key="cancel">Откажи</button>
+                </div>
             </div>
-            <div id="messagesList">Се вчитавуваат пораките...</div>
-            <button class="btn-back" onclick="showPage('homePage')">← НАЗАД</button>
+            <div id="messagesList" data-key="loading">Се вчитавуваат пораките...</div>
+            <button class="btn-back" onclick="showPage('homePage')" data-key="back">← НАЗАД</button>
         </div>
     </div>
 
     <script>
-        const apiURL = "https://sheetdb.io/api/v1/z8rku0vozkyiq";
+        const translations = {
+            mk: {
+                nav_home: "Почетна", nav_table: "Најди маса", nav_location: "Локација", nav_menu: "Мени", nav_music: "Музика", nav_gallery: "Галерија", nav_guestbook: "Впечатоци",
+                wedding_date: "29.08.2026 • 19:00ч", loading: "Се вчитавува...", story_title: "Нашата Приказна", story_text: "Добредојдовте во нашата дигитална покана! Се радуваме што ќе го споделиме овој посебен ден со вас. Овде можете да ги најдете сите потребни информации за прославата, да го видите менито или да ни оставите порака.",
+                btn_find_table: "НАЈДИ ЈА ТВОЈАТА МАСА", btn_location: "ЛОКАЦИЈА", btn_menu: "ПОГЛЕДНИ ГО МЕНИТО", btn_party: "ЗА ЗАБАВАТА", btn_gallery: "ГАЛЕРИЈА СО СЛИКИ", btn_guestbook: "КНИГА НА ВПЕЧАТОЦИ",
+                latest_wishes: "Најнови желби", view_all: "Видете ги сите впечатоци →", loc_text: "Прославата ќе се одржи во:", btn_open_maps: "ОТВОРИ ВО GOOGLE MAPS", back: "← НАЗАД",
+                table_title: "Вашата Маса", table_desc: "Внесете го вашето име за да дознаете каде седите.", input_name_placeholder: "Име и Презиме", search: "ПРЕБАРАЈ", did_you_mean: "Дали мислевте на:",
+                menu_title: "Свадбено Мени", menu_1_t: "🍸 Добредојде", menu_1_c: "Аперитив и коктел за добредојде со ладни каснаци.", menu_2_t: "🥗 Салата", menu_2_c: "Шопска салата со свежо овчо сирење и македонска даска (пршут, кашкавал, ајвар, маслинки).", menu_3_t: "🧀 Топло предјадење", menu_3_c: "Сармички во лозов лист и домашен похуван кашкавал.", menu_4_t: "🍖 Главно јадење", menu_4_c: "Мешана скара (плескавица, пилешки стек, вешалица) со гарнир од печен компир и зеленчук.", menu_5_t: "🍰 Десерт", menu_5_c: "Свечена свадбена торта и свежо сезонско овошје.",
+                music_desc: "За подиумот да биде постојано полн и атмосферата незаборавна, задолжени се нашите пријатели:", shoes_text: "Подгответе ги удобните чевли!", fb_profile: "ФЕЈСБУК ПРОФИЛ", ig_profile: "ИНСТАГРАМ ПРОФИЛ",
+                gallery_share_title: "Споделете моменти со нас", gallery_share_desc: "Доколку имате слики од забавата кои сакате да ни ги испратите, притиснете на копчето подолу.", captcha_placeholder: "Код од сликата", btn_upload: "ПРИКАЧИ ФАЈЛОВИ", captcha_correct: "✅ Кодот е точен!", click_to_upload: "КЛИКНИ ТУКА ЗА ПРИКАЧУВАЊЕ",
+                guestbook_title: "Вашите Желби", btn_new_post: "✨ НОВА ОБЈАВА", label_table: "Маса:", opt_choose_table: "Избери маса...", label_name: "Вашето име:", gb_name_placeholder: "Почни да пишуваш...", label_msg: "Вашата порака:", gb_msg_placeholder: "Напишете нешто убаво...", btn_publish: "ОБЈАВИ", cancel: "Откажи",
+                welcome_prefix: "Добредојде, ", table_prefix: "МАСА ", mates_text: "На истата маса седат:", err_name: "Внесете име.", err_not_found: "Името не е пронајдено.", status_sending: "Се испраќа...", status_success: "Успешно објавено!", status_error: "Грешка!", status_fill: "Пополнете ги сите полиња!",
+                days_short: "д", hours_short: "ч", mins_short: "м", secs_short: "с"
+            },
+            en: {
+                nav_home: "Home", nav_table: "Find Table", nav_location: "Location", nav_menu: "Menu", nav_music: "Music", nav_gallery: "Gallery", nav_guestbook: "Guestbook",
+                wedding_date: "29.08.2026 • 7:00 PM", loading: "Loading...", story_title: "Our Story", story_text: "Welcome to our digital invitation! We are excited to share this special day with you. Here you can find all the necessary info, see the menu, or leave us a message.",
+                btn_find_table: "FIND YOUR TABLE", btn_location: "LOCATION", btn_menu: "VIEW MENU", btn_party: "THE PARTY", btn_gallery: "PHOTO GALLERY", btn_guestbook: "GUESTBOOK",
+                latest_wishes: "Latest Wishes", view_all: "View all wishes →", loc_text: "The celebration will take place at:", btn_open_maps: "OPEN IN GOOGLE MAPS", back: "← BACK",
+                table_title: "Your Table", table_desc: "Enter your name to find out where you are sitting.", input_name_placeholder: "First and Last Name", search: "SEARCH", did_you_mean: "Did you mean:",
+                menu_title: "Wedding Menu", menu_1_t: "🍸 Welcome", menu_1_c: "Aperitif and welcome cocktail with cold appetizers.", menu_2_t: "🥗 Salad", menu_2_c: "Shopska salad with fresh sheep cheese and Macedonian board (prosciutto, cheese, ajvar, olives).", menu_3_t: "🧀 Warm Appetizer", menu_3_c: "Vine leaf rolls (sarma) and homemade fried cheese.", menu_4_t: "🍖 Main Course", menu_4_c: "Mixed grill (burger, chicken steak, veshalica) with roasted potatoes and vegetables.", menu_5_t: "🍰 Dessert", menu_5_c: "Wedding cake and fresh seasonal fruit.",
+                music_desc: "To keep the dance floor full and the atmosphere unforgettable, our friends are in charge:", shoes_text: "Get your dancing shoes ready!", fb_profile: "FACEBOOK PROFILE", ig_profile: "INSTAGRAM PROFILE",
+                gallery_share_title: "Share moments with us", gallery_share_desc: "If you have photos from the party you'd like to send us, click the button below.", captcha_placeholder: "Code from image", btn_upload: "UPLOAD FILES", captcha_correct: "✅ Code is correct!", click_to_upload: "CLICK HERE TO UPLOAD",
+                guestbook_title: "Your Wishes", btn_new_post: "✨ NEW POST", label_table: "Table:", opt_choose_table: "Choose table...", label_name: "Your Name:", gb_name_placeholder: "Start typing...", label_msg: "Your Message:", gb_msg_placeholder: "Write something beautiful...", btn_publish: "POST", cancel: "Cancel",
+                welcome_prefix: "Welcome, ", table_prefix: "TABLE ", mates_text: "Seated at the same table:", err_name: "Please enter a name.", err_not_found: "Name not found.", status_sending: "Sending...", status_success: "Posted successfully!", status_error: "Error!", status_fill: "Please fill all fields!",
+                days_short: "d", hours_short: "h", mins_short: "m", secs_short: "s"
+            },
+            hr: {
+                nav_home: "Početna", nav_table: "Nađi stol", nav_location: "Lokacija", nav_menu: "Jelovnik", nav_music: "Glazba", nav_gallery: "Galerija", nav_guestbook: "Dojmovi",
+                wedding_date: "29.08.2026 • 19:00h", loading: "Učitavanje...", story_title: "Naša priča", story_text: "Dobrodošli u našu digitalnu pozivnicu! Radujemo se što ćemo ovaj poseban dan podijeliti s vama. Ovdje možete pronaći sve informacije, vidjeti jelovnik ili nam ostaviti poruku.",
+                btn_find_table: "NAĐI SVOJ STOL", btn_location: "LOKACIJA", btn_menu: "POGLEDAJ JELOVNIK", btn_party: "O ZABAVI", btn_gallery: "GALERIJA SLIKA", btn_guestbook: "KNJIGA DOJMOVA",
+                latest_wishes: "Najnovije želje", view_all: "Vidi sve dojmove →", loc_text: "Proslava će se održati u:", btn_open_maps: "OTVORI U GOOGLE MAPS", back: "← NATRAG",
+                table_title: "Vaš stol", table_desc: "Unesite svoje ime kako biste saznali gdje sjedite.", input_name_placeholder: "Ime i prezime", search: "PRETRAŽI", did_you_mean: "Jeste li mislili na:",
+                menu_title: "Svadbeni jelovnik", menu_1_t: "🍸 Dobrodošlica", menu_1_c: "Aperitiv i koktel dobrodošlice uz hladne zalogaje.", menu_2_t: "🥗 Salata", menu_2_c: "Šopska salata sa svježim ovčjim sirom i makedonska daska (pršut, sir, ajvar, masline).", menu_3_t: "🧀 Toplo predjelo", menu_3_c: "Sarmice u vinovoj lozi i domaći pohani sir.", menu_4_t: "🍖 Glavno jelo", menu_4_c: "Miješano meso s roštilja s prilogom od pečenog krumpira i povrća.", menu_5_t: "🍰 Desert", menu_5_c: "Svečana svadbena torta i svježe sezonsko voće.",
+                music_desc: "Za pun podij i nezaboravnu atmosferu zaduženi su naši prijatelji:", shoes_text: "Pripremite udobne cipele!", fb_profile: "FACEBOOK PROFIL", ig_profile: "INSTAGRAM PROFIL",
+                gallery_share_title: "Podijelite trenutke s nama", gallery_share_desc: "Ako imate slike sa zabave koje nam želite poslati, kliknite na gumb ispod.", captcha_placeholder: "Kod sa slike", btn_upload: "PRILOŽI DATOTEKE", captcha_correct: "✅ Kod je točan!", click_to_upload: "KLIKNI OVDJE ZA SLANJE",
+                guestbook_title: "Vaše želje", btn_new_post: "✨ NOVA OBJAVA", label_table: "Stol:", opt_choose_table: "Odaberi stol...", label_name: "Vaše ime:", gb_name_placeholder: "Počni tipkati...", label_msg: "Vaša poruka:", gb_msg_placeholder: "Napišite nešto lijepo...", btn_publish: "OBJAVI", cancel: "Odustani",
+                welcome_prefix: "Dobrodošli, ", table_prefix: "STOL ", mates_text: "Za istim stolom sjede:", err_name: "Unesite ime.", err_not_found: "Ime nije pronađeno.", status_sending: "Slanje...", status_success: "Uspješno objavljeno!", status_error: "Greška!", status_fill: "Popunite sva polja!",
+                days_short: "d", hours_short: "h", mins_short: "m", secs_short: "s"
+            },
+            sr: {
+                nav_home: "Početna", nav_table: "Nađi sto", nav_location: "Lokacija", nav_menu: "Meni", nav_music: "Muzika", nav_gallery: "Galerija", nav_guestbook: "Utisci",
+                wedding_date: "29.08.2026 • 19:00č", loading: "Učitavanje...", story_title: "Naša priča", story_text: "Dobrodošli u našu digitalnu pozivnicu! Radujemo se što ćemo ovaj poseban dan podeliti sa vama. Ovde možete naći sve informacije, videti meni ili nam ostaviti poruku.",
+                btn_find_table: "NAĐI SVOJ STO", btn_location: "LOKACIJA", btn_menu: "POGLEDAJ MENI", btn_party: "O ZABAVI", btn_gallery: "GALERIJA SLIKA", btn_guestbook: "KNJIGA UTISAKA",
+                latest_wishes: "Najnovije želje", view_all: "Vidi sve utiske →", loc_text: "Proslava će se održati u:", btn_open_maps: "OTVORI U GOOGLE MAPS", back: "← NAZAD",
+                table_title: "Vaš sto", table_desc: "Unesite svoje ime da saznate gde sedite.", input_name_placeholder: "Ime i prezime", search: "PRETRAŽI", did_you_mean: "Da li ste mislili na:",
+                menu_title: "Svadbeni meni", menu_1_t: "🍸 Dobrodošlica", menu_1_c: "Aperitiv i koktel dobrodošlice uz hladne zakuske.", menu_2_t: "🥗 Salata", menu_2_c: "Šopska salata sa ovčijim sirom i makedonska daska (pršuta, kačkavalj, ajvar, masline).", menu_3_t: "🧀 Toplo predjelo", menu_3_c: "Sarmice u lozovom listu i domaći pohovani kačkavalj.", menu_4_t: "🍖 Glavno jelo", menu_4_c: "Mešani roštilj sa prilogom od pečenog krompira i povrća.", menu_5_t: "🍰 Desert", menu_5_c: "Svečana svadbena torta i sveže sezonsko voće.",
+                music_desc: "Za pun podijum i nezaboravnu atmosferu zaduženi su naši prijatelji:", shoes_text: "Pripremite udobnu obuću!", fb_profile: "FACEBOOK PROFIL", ig_profile: "INSTAGRAM PROFIL",
+                gallery_share_title: "Podelite trenutke sa nama", gallery_share_desc: "Ako imate slike sa zabave koje želite da nam pošaljete, kliknite na dugme ispod.", captcha_placeholder: "Kod sa slike", btn_upload: "PRILOŽI DATOTEKE", captcha_correct: "✅ Kod je tačan!", click_to_upload: "KLIKNI OVDE ZA SLANJE",
+                guestbook_title: "Vaše želje", btn_new_post: "✨ NOVA OBJAVA", label_table: "Sto:", opt_choose_table: "Izaberi sto...", label_name: "Vaše ime:", gb_name_placeholder: "Počni da pišeš...", label_msg: "Vaša poruka:", gb_msg_placeholder: "Napišite nešto lepo...", btn_publish: "OBJAVI", cancel: "Otkaži",
+                welcome_prefix: "Dobrodošli, ", table_prefix: "STO ", mates_text: "Za istim stolom sede:", err_name: "Unesite ime.", err_not_found: "Ime nije pronađeno.", status_sending: "Slanje...", status_success: "Uspešno objavljeno!", status_error: "Greška!", status_fill: "Popunite sva polja!",
+                days_short: "d", hours_short: "č", mins_short: "m", secs_short: "s"
+            },
+            sq: {
+                nav_home: "Ballina", nav_table: "Gjej tryezën", nav_location: "Lokacioni", nav_menu: "Menuja", nav_music: "Muzika", nav_gallery: "Galeria", nav_guestbook: "Përshtypjet",
+                wedding_date: "29.08.2026 • 19:00", loading: "Duke u ngarkuar...", story_title: "Historia Jonë", story_text: "Mirë se vini në ftesën tonë dixhitale! Jemi të lumtur të ndajmë këtë ditë të veçantë me ju. Këtu mund të gjeni të gjitha informacionet, të shihni menunë ose të na lini një mesazh.",
+                btn_find_table: "GJEJ TRYREZEN TUAJ", btn_location: "LOKACIONI", btn_menu: "SHIKO MENUNË", btn_party: "PËR FESTËN", btn_gallery: "GALERIA E FOTOVE", btn_guestbook: "LIBRI I PËRSHTYPJEVE",
+                latest_wishes: "Urimet e fundit", view_all: "Shih të gjitha përshtypjet →", loc_text: "Festa do të mbahet në:", btn_open_maps: "HAP NË GOOGLE MAPS", back: "← MBRAPA",
+                table_title: "Tryeza Juaj", table_desc: "Shkruani emrin tuaj për të zbuluar se ku jeni ulur.", input_name_placeholder: "Emri dhe Mbiemri", search: "KËRKO", did_you_mean: "A e kishit fjalën për:",
+                menu_title: "Menuja e Dasmës", menu_1_t: "🍸 Mirëseardhja", menu_1_c: "Aperitiv dhe koktej mirëseardhjeje me ushqime të ftohta.", menu_2_t: "🥗 Sallata", menu_2_c: "Sallatë Shopska me djathë deleje dhe dërrasë maqedonase (proshutë, kaçkavall, ajvar, ullinj).", menu_3_t: "🧀 Paraushqim i Ngrohtë", menu_3_c: "Sarma në gjethe rrushi dhe kaçkavall shtëpie i fërguar.", menu_4_t: "🍖 Pjata Kryesore", menu_4_c: "Mish i pjekur në skarë (hamburger, qofte pule, veshalica) me patate të pjekura dhe perime.", menu_5_t: "🍰 Deserti", menu_5_c: "Tortë festive e dasmës dhe fruta të freskëta sezonale.",
+                music_desc: "Për të mbajtur pistën plot dhe atmosferën e paharrueshme, miqtë tanë janë në krye:", shoes_text: "Përgatitni këpucët e rehatshme!", fb_profile: "PROFILI FACEBOOK", ig_profile: "PROFILI INSTAGRAM",
+                gallery_share_title: "Ndani momentet me ne", gallery_share_desc: "Nëse keni foto nga festa që dëshironi të na dërgoni, klikoni butonin më poshtë.", captcha_placeholder: "Kodi nga imazhi", btn_upload: "NGARKONI SKEDARËT", captcha_correct: "✅ Kodi është i saktë!", click_to_upload: "KLIKO KËTU PËR TË NGARKUAR",
+                guestbook_title: "Urimet Tuaja", btn_new_post: "✨ POSTIM I RI", label_table: "Tryeza:", opt_choose_table: "Zgjidh tryezën...", label_name: "Emri juaj:", gb_name_placeholder: "Fillo të shkruash...", label_msg: "Mesazhi juaj:", gb_msg_placeholder: "Shkruani diçka të bukur...", btn_publish: "PUBLIKO", cancel: "Anulo",
+                welcome_prefix: "Mirë se vini, ", table_prefix: "TRYEZA ", mates_text: "Në të njëjtën tryezë ulen:", err_name: "Ju lutemi shkruani emrin.", err_not_found: "Emri nuk u gjet.", status_sending: "Duke u dërguar...", status_success: "U publikua me sukses!", status_error: "Gabim!", status_fill: "Ju lutemi plotësoni të gjitha fushat!",
+                days_short: "d", hours_short: "o", mins_short: "m", secs_short: "s"
+            }
+        };
+
+        let currentLang = 'mk';
+
+        function changeLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) el.innerText = translations[lang][key];
+            });
+            document.querySelectorAll('[data-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[lang][key]) el.placeholder = translations[lang][key];
+            });
+            
+            document.querySelectorAll('.btn-lang').forEach(btn => {
+                btn.classList.remove('active-lang');
+                if(btn.innerText.toLowerCase() === lang) btn.classList.add('active-lang');
+            });
+            
+            updateCountdown();
+            if (document.getElementById('tablePage').classList.contains('active')) {
+                document.getElementById('result').style.display = 'none';
+            }
+        }
+
+        const apiURL = "https://script.google.com/macros/s/AKfycbwpm38mjJR0okEDqTPdRZWieQNLYrdCkjd_gVtm88ufcEj64anuJM6wTsO7Rs9Dp6w/exec"; 
+
         const weddingDate = new Date("August 29, 2026 19:00:00").getTime();
+        let lastDataHash = "";
 
         const guestList = [
             { name: "Гордана Стевчева", table: 1 }, { name: "Димитар Стевчев", table: 1 },
@@ -273,162 +401,219 @@
             { name: "Славко Расточиќ", table: 3 }
         ];
 
-        function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
-        function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
+        function populateTableDropdown() {
+            const select = document.getElementById('gbTableSelect');
+            const tables = [...new Set(guestList.map(g => g.table))].sort((a,b) => a-b);
+            tables.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t;
+                opt.textContent = translations[currentLang].table_prefix + t;
+                select.appendChild(opt);
+            });
+        }
+
+        window.onload = function() {
+            loadAllMessages();
+            populateTableDropdown();
+            changeLang('mk');
+        };
 
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-            
             const logo = document.getElementById('mainLogo');
             const navIcon = document.getElementById('navIcon');
-
-            if(pageId === 'homePage') {
-                logo.classList.replace('img-small', 'img-large');
-                navIcon.style.display = 'none';
-            } else {
-                logo.classList.replace('img-large', 'img-small');
-                navIcon.style.display = 'block';
-                if(pageId === 'guestbookPage') loadMessages();
-                if(pageId === 'tablePage') generateCaptcha();
-                if(pageId === 'galleryPage') generateUploadCaptcha();
-            }
+            if(pageId === 'homePage') { logo.className = 'main-header-img img-large'; navIcon.style.display = 'none'; }
+            else { logo.className = 'main-header-img img-small'; navIcon.style.display = 'block'; }
+            if(pageId === 'guestbookPage') loadAllMessages();
+            if(pageId === 'galleryPage') generateUploadCaptcha();
             window.scrollTo(0, 0);
         }
 
-        setInterval(() => {
+        function openNav() { document.getElementById("mySidenav").style.width = "280px"; }
+        function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
+
+        function updateCountdown() {
             const now = new Date().getTime();
             const d = weddingDate - now;
-            if (d < 0) { document.getElementById("countdown").innerHTML = "Свадбата започна!"; return; }
-            document.getElementById("countdown").innerHTML = Math.floor(d/(1000*60*60*24)) + "д " + Math.floor((d%(1000*60*60*24))/(1000*60*60)) + "ч " + Math.floor((d%(1000*60*60))/(1000*60)) + "м " + Math.floor((d%(1000*60))/1000) + "с";
-        }, 1000);
-
-        function filterGuestNames() {
-            const tableNum = parseInt(document.getElementById('guestbookTableNum').value);
-            const select = document.getElementById('visitorNameSelect');
-            select.innerHTML = '<option value="">-- Избери име --</option>';
-            guestList.filter(g => g.table === tableNum).forEach(g => {
-                const opt = document.createElement('option'); opt.value = g.name; opt.textContent = g.name; select.appendChild(opt);
-            });
-        }
-
-        function loadMessages() {
-            fetch(apiURL).then(r => r.json()).then(data => {
-                const list = document.getElementById('messagesList');
-                list.innerHTML = data.length === 0 ? "Бидете први што ќе остават порака!" : "";
-                data.reverse().forEach(item => {
-                    const div = document.createElement('div');
-                    div.style.cssText = "border-bottom: 1px solid #f2e4e4; padding: 12px 0;";
-                    div.innerHTML = `<strong style="color:var(--accent)">${item.name}:</strong><p style="font-style:italic; margin:5px 0;">${item.message}</p><small style="color:#bbb; font-size:0.7rem;">${item.date || ""}</small>`;
-                    list.appendChild(div);
-                });
-            });
-        }
-
-        function postMessage() {
-            const name = document.getElementById('visitorNameSelect').value;
-            const msg = document.getElementById('visitorMessage').value;
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('mk-MK') + " " + now.toLocaleTimeString('mk-MK', {hour:'2-digit', minute:'2-digit'});
-            if(!name || !msg) return alert("Изберете име и порака!");
+            if (d < 0) { document.getElementById("countdown").innerHTML = "♥"; return; }
+            const days = Math.floor(d/(1000*60*60*24));
+            const hours = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+            const minutes = Math.floor((d%(1000*60*60))/(1000*60));
+            const seconds = Math.floor((d%(1000*60))/1000);
             
-            fetch(apiURL, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({data: [{name, message: msg, date: dateStr}]})
-            }).then(() => {
-                document.getElementById('visitorMessage').value = "";
-                loadMessages();
-            });
+            const t = translations[currentLang];
+            document.getElementById("countdown").innerHTML = `${days}${t.days_short} ${hours}${t.hours_short} ${minutes}${t.mins_short} ${seconds}${t.secs_short}`;
+        }
+        setInterval(updateCountdown, 1000);
+
+        function processEmoji(text, isAnimated) {
+            if (!text) return "";
+            const regex = /[\u{1F389}\u{1F38A}\u{1F942}\u{1F37B}\u{1F381}]/gu;
+            return isAnimated ? text.replace(regex, m => `<span class="animated-emoji">${m}</span>`) : text;
         }
 
-        let currentCaptcha = "", currentUploadCaptcha = "";
-        function generateCaptcha() {
-            const canvas = document.getElementById("captchaCanvas");
-            const ctx = canvas.getContext("2d");
-            currentCaptcha = Math.random().toString(36).substring(2, 7).toUpperCase();
-            ctx.clearRect(0,0,150,50); ctx.font="bold 24px Arial"; ctx.fillStyle="#d4a3a3"; ctx.fillText(currentCaptcha, 35, 35);
+        async function loadAllMessages() {
+            if (!apiURL || apiURL === "") return;
+            try {
+                const response = await fetch(apiURL + "?nocache=" + new Date().getTime());
+                const data = await response.json();
+                const currentHash = JSON.stringify(data);
+                if (currentHash === lastDataHash) return;
+                lastDataHash = currentHash;
+                const rev = data.slice().reverse();
+                
+                document.getElementById('homeMessages').innerHTML = rev.slice(0, 5).map(m => `<div class="home-msg-item"><strong>${m.name}:</strong> ${processEmoji(m.message, true)}</div>`).join('');
+                
+                const fullList = document.getElementById('messagesList');
+                if (fullList) {
+                    fullList.innerHTML = rev.map(m => `<div style="border-bottom: 1px solid #f2e4e4; padding: 15px 0;"><strong style="color:var(--accent)">${m.name}:</strong><p style="margin:8px 0; line-height:1.5;">${processEmoji(m.message, false)}</p><small style="color:#bbb; font-size:0.75rem;">${m.date || ""}</small></div>`).join('');
+                }
+            } catch (e) { console.log("Load error", e); }
         }
-        function generateUploadCaptcha() {
-            const canvas = document.getElementById("uploadCaptchaCanvas");
-            const ctx = canvas.getContext("2d");
-            currentUploadCaptcha = Math.random().toString(36).substring(2, 7).toUpperCase();
-            ctx.clearRect(0,0,150,50); ctx.font="bold 24px Arial"; ctx.fillStyle="#d4a3a3"; ctx.fillText(currentUploadCaptcha, 35, 35);
+
+        setInterval(loadAllMessages, 15000);
+
+        function toggleGbForm() {
+            const f = document.getElementById('gbFormContainer'); const b = document.getElementById('togglePostBtn');
+            const s = document.getElementById('postStatus');
+            s.style.display = "none";
+            if (f.style.display === 'block') { f.style.display = 'none'; b.style.display = 'block'; }
+            else { f.style.display = 'block'; b.style.display = 'none'; }
         }
-        function verifyAndUpload() {
-            if (document.getElementById('uploadCaptchaInput').value.toUpperCase() === currentUploadCaptcha) {
-                document.getElementById('uploadCaptchaArea').style.display = 'none';
-                document.getElementById('uploadLink').style.display = 'block';
-            } else { alert("Погрешен код!"); generateUploadCaptcha(); }
+
+        function resetGbNameField() {
+            document.getElementById('gbNameInput').value = "";
+            document.getElementById('gbDropdown').style.display = "none";
+        }
+
+        function handleGbSearch(val) {
+            const table = document.getElementById('gbTableSelect').value;
+            const drop = document.getElementById('gbDropdown');
+            if (!table || val.length < 3) { drop.style.display = "none"; return; }
+            
+            const matches = guestList.filter(g => 
+                g.table == table && simplify(g.name).includes(simplify(val))
+            );
+
+            if (matches.length > 0) {
+                drop.innerHTML = matches.map(m => `<div onclick="selectGbGuest('${m.name}')">${m.name}</div>`).join('');
+                drop.style.display = "block";
+            } else {
+                drop.style.display = "none";
+            }
+        }
+
+        function selectGbGuest(name) {
+            document.getElementById('gbNameInput').value = name;
+            document.getElementById('gbDropdown').style.display = "none";
+        }
+
+        async function postMessage() {
+            const rawName = document.getElementById('gbNameInput').value;
+            const msg = document.getElementById('gbMessageInput').value;
+            const table = document.getElementById('gbTableSelect').value;
+            const status = document.getElementById('postStatus');
+            const t = translations[currentLang];
+
+            if (!rawName || !msg || !table) {
+                status.style.display = "block"; status.style.color = "red";
+                status.innerText = t.status_fill;
+                return;
+            }
+
+            const simInput = simplify(rawName);
+            let finalName = rawName;
+            let bestMatch = null;
+            let minScore = 5;
+
+            guestList.forEach(g => {
+                if(g.table == table) {
+                    const score = getDist(simInput, simplify(g.name));
+                    if(score < minScore) { minScore = score; bestMatch = g.name; }
+                }
+            });
+            if(bestMatch) finalName = bestMatch;
+
+            const nameParts = finalName.trim().split(" ");
+            let loggedName = nameParts[0];
+            if (nameParts.length > 1) {
+                loggedName += " " + nameParts[1].charAt(0) + ".";
+            }
+
+            status.style.display = "block"; status.style.color = "orange";
+            status.innerText = t.status_sending;
+
+            const now = new Date();
+            const timestamp = `${now.getHours()}:${now.getMinutes()}h • ${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
+
+            try {
+                await fetch(apiURL, {
+                    method: 'POST', mode: 'no-cors',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ data: [{ name: loggedName, message: msg, table: table, date: timestamp }] })
+                });
+                status.style.color = "green"; status.innerText = t.status_success;
+                setTimeout(() => { toggleGbForm(); loadAllMessages(); }, 1500);
+            } catch(e) {
+                status.style.color = "red"; status.innerText = t.status_error;
+            }
         }
 
         function simplify(t) {
-            const map = {'а':'a','б':'b','в':'v','г':'g','д':'d','ѓ':'gj','е':'e','ж':'zh','з':'z','ѕ':'dz','и':'i','ј':'j','к':'k','л':'l','љ':'lj','м':'m','н':'n','њ':'nj','о':'o','п':'p','р':'r','с':'s','т':'t','ќ':'kj','у':'u','ф':'f','х':'h','ц':'c','ч':'ch','џ':'dz','ш':'sh'};
-            return t.toLowerCase().trim().split('').map(c => map[c] || c).join('').replace(/ch/g,'c').replace(/sh/g,'s');
+            const m = {'а':'a','б':'b','в':'v','г':'g','д':'d','ѓ':'gj','е':'e','ж':'zh','з':'z','ѕ':'dz','и':'i','ј':'j','к':'k','л':'l','љ':'lj','м':'m','н':'n','њ':'nj','о':'o','п':'p','р':'r','с':'s','т':'t','ќ':'kj','у':'u','ф':'f','х':'h','ц':'c','ч':'ch','џ':'dz','ш':'sh'};
+            return t.toLowerCase().trim().split('').map(c => m[c] || c).join('').replace(/ch/g,'c').replace(/sh/g,'s');
         }
 
-        // Levenshtein Algorithm for Fuzzy Match
-        function levenshtein(a, b) {
+        function getDist(a, b) {
             const matrix = [];
             for(let i=0; i<=b.length; i++) matrix[i] = [i];
             for(let j=0; j<=a.length; j++) matrix[0][j] = j;
-            for(let i=1; i<=b.length; i++){
-                for(let j=1; j<=a.length; j++){
-                    if(b.charAt(i-1) == a.charAt(j-1)) matrix[i][j] = matrix[i-1][j-1];
-                    else matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, Math.min(matrix[i][j-1] + 1, matrix[i-1][j] + 1));
-                }
-            }
+            for(let i=1; i<=b.length; i++)
+                for(let j=1; j<=a.length; j++)
+                    matrix[i][j] = b.charAt(i-1) == a.charAt(j-1) ? matrix[i-1][j-1] : Math.min(matrix[i-1][j-1]+1, matrix[i][j-1]+1, matrix[i-1][j]+1);
             return matrix[b.length][a.length];
         }
 
-        let pendingSuggestion = "";
+        let uploadCap = "";
+        function generateUploadCaptcha() {
+            const c = document.getElementById("uploadCaptchaCanvas"); const ctx = c.getContext("2d");
+            uploadCap = Math.random().toString(36).substring(2, 7).toUpperCase();
+            ctx.clearRect(0,0,150,50); ctx.fillStyle = "#f2fdf2"; ctx.fillRect(0,0,150,50);
+            ctx.font = "bold 26px Arial"; ctx.fillStyle = "#2e7d32"; ctx.fillText(uploadCap, 30, 35);
+        }
+        function verifyAndUpload() {
+            if (document.getElementById('uploadCaptchaInput').value.toUpperCase() === uploadCap) {
+                document.getElementById('uploadCaptchaArea').style.display = 'none';
+                document.getElementById('uploadLink').style.display = 'block';
+            } else { alert("Incorrect!"); generateUploadCaptcha(); }
+        }
 
-        function findTable(skipCaptcha = false) {
-            if(!skipCaptcha && document.getElementById('captchaInput').value.toUpperCase() !== currentCaptcha) return alert("Погрешен код!");
-            
-            const inputRaw = document.getElementById('guestNameSearch').value;
-            const inputSimple = simplify(inputRaw);
-            
-            // 1. Точно совпаѓање
-            const guest = guestList.find(g => simplify(g.name) === inputSimple);
-
-            document.getElementById('result').style.display = 'none';
-            document.getElementById('suggestionBox').style.display = 'none';
-
-            if(guest) {
-                document.getElementById('welcomeMsg').innerText = "Здраво, " + guest.name;
-                document.getElementById('tableNumResult').innerText = "МАСА " + guest.table;
-                const mates = guestList.filter(g => g.table === guest.table && g.name !== guest.name);
-                document.getElementById('otherGuests').innerHTML = "<strong>На вашата маса:</strong><br>" + (mates.map(m => "• " + m.name).join('<br>'));
-                document.getElementById('result').style.display = 'block';
-            } else {
-                // 2. Fuzzy пребарување (Грешка во пишување)
-                let bestMatch = null;
-                let minDistance = Infinity;
-
-                guestList.forEach(g => {
-                    const dist = levenshtein(inputSimple, simplify(g.name));
-                    // Дозволуваме мала грешка (помала или еднаква на 3 карактери)
-                    if (dist < minDistance && dist <= 3) {
-                        minDistance = dist;
-                        bestMatch = g;
-                    }
-                });
-
-                if (bestMatch) {
-                    pendingSuggestion = bestMatch.name;
-                    document.getElementById('suggestedName').innerText = bestMatch.name;
-                    document.getElementById('suggestionBox').style.display = 'block';
-                } else {
-                    alert("Името не е пронајдено.");
-                }
+        let pendingName = "";
+        function findTable(skip = false) {
+            const raw = document.getElementById('guestNameSearch').value;
+            const t = translations[currentLang];
+            if (!raw.trim()) return alert(t.err_name);
+            const sim = simplify(raw);
+            const exact = guestList.find(g => simplify(g.name) === sim);
+            if(exact) { showResult(exact); }
+            else {
+                let best = null, min = 4;
+                guestList.forEach(g => { const d = getDist(sim, simplify(g.name)); if(d < min) { min = d; best = g; } });
+                if(best) { pendingName = best.name; document.getElementById('suggestedName').innerText = best.name; document.getElementById('suggestionBox').style.display = 'block'; }
+                else alert(t.err_not_found);
             }
         }
-
-        function applySuggestion() {
-            document.getElementById('guestNameSearch').value = pendingSuggestion;
-            findTable(true); // Пребарај повторно, скокни капча бидејќи веќе ја поминал корисникот
+        function showResult(g) {
+            const t = translations[currentLang];
+            document.getElementById('welcomeMsg').innerText = t.welcome_prefix + g.name;
+            document.getElementById('tableNumResult').innerText = t.table_prefix + g.table;
+            const mates = guestList.filter(x => x.table === g.table && x.name !== g.name);
+            document.getElementById('otherGuests').innerHTML = `<strong>${t.mates_text}</strong><br>` + mates.map(m => "• " + m.name).join('<br>');
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('suggestionBox').style.display = 'none';
         }
+        function applySuggestion() { document.getElementById('guestNameSearch').value = pendingName; findTable(true); }
     </script>
 </body>
 </html>
